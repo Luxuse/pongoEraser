@@ -41,8 +41,11 @@ exFAT
 
 bash
 git clone https://github.com/Luxuse/pongoEraser.git
+
 chmod 777 pongoEraser.sh
+
 sudo ./pongoEraser.sh
+
 ## 🔒 Sécurité avant tout !
 Assurez-vous de bien comprendre les conséquences de l'effacement sécurisé avant de continuer.
 
