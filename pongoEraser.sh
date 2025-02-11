@@ -46,7 +46,7 @@ case $METHOD in
     2) shred -n 1 -v $DISK_PATH;;
     3) shred -n 1 -Z -v $DISK_PATH;; # Norme AIRFORCE
     4) shred -n 1 -v $DISK_PATH;; # Norme NIST 800-88
-    5) shred -n 2 -z -v $DISK_PATH;; # Norme HMG IS5
+    5) shred -n 0 -z -v $DISK_PATH && shred -n 1 -v $DISK_PATH && shred -n 0 -Z -v $DISK_PATH;; # Norme HMG IS5
     6) shred -n 7  -v $DISK_PATH;;
     7) shred -n 35 -v $DISK_PATH;;
     8) shred -n 1 -v $DISK_PATH && shred -n 0 -z -v $DISK_PATH && shred -n 1 -v $DISK_PATH;; # Norme ANSSI
