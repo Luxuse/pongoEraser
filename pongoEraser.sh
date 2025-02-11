@@ -39,20 +39,32 @@ echo "8)  Méthode ANSSI (3 passes : 1 aléatoire + 1 zéro + 1 aléatoire)"
 echo "9)  ssd secure erase"
 read -p "Choisissez une méthode (1-9) : " METHOD
 
-# Définir la commande shred avec affichage de la progression
-echo "???? Effacement en cours..."
+#!/bin/bash
+
+# Afficher un message d'effacement en cours
+echo "🔄 Effacement en cours..."
+
+# Exécuter la commande shred en fonction de la méthode choisie
 case $METHOD in
     1) shred -n 0 -z -v $DISK_PATH;;
     2) shred -n 1 -v $DISK_PATH;;
     3) shred -n 1 -Z -v $DISK_PATH;; # Norme AIRFORCE
     4) shred -n 1 -v $DISK_PATH;; # Norme NIST 800-88
-    5) shred -n 0 -z -v $DISK_PATH && shred -n 1 -v $DISK_PATH && shred -n 0 -Z -v $DISK_PATH;; # Norme HMG IS5
-    6) shred -n 7  -v $DISK_PATH;;
+    5) (shred -n 0 -z -v $DISK_PATH && shred -n 1 -v $DISK_PATH && shred -n 0 -Z -v $DISK_PATH);; # Norme HMG IS5
+    6) shred -n 7 -v $DISK_PATH;;
     7) shred -n 35 -v $DISK_PATH;;
-    8) shred -n 1 -v $DISK_PATH && shred -n 0 -z -v $DISK_PATH && shred -n 1 -v $DISK_PATH;; # Norme ANSSI
+    8) (shred -n 1 -v $DISK_PATH && shred -n 0 -z -v $DISK_PATH && shred -n 1 -v $DISK_PATH);; # Norme ANSSI
     9) blkdiscard -f $DISK_PATH;;
     *) echo "❌ Option invalide."; exit 1;;
 esac
+
+# Vérifier le code de retour pour afficher un message de succès ou d'erreur
+if [ $? -eq 0 ]; then
+    echo "✅ Effacement terminé avec succès."
+else
+    echo "❌ Une erreur est survenue pendant l'effacement."
+fi
+
 
 echo "✅ Effacement sécurisé terminé."
 
