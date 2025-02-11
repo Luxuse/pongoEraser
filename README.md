@@ -37,7 +37,7 @@ exFAT
 ✅ Interface simple et intuitive
 📜 Instructions d'utilisation
 1️⃣ Téléchargement & Exécution
-##Téléchargez le script et exécutez-le avec les permissions root :
+## Téléchargez le script et exécutez-le avec les permissions root :
 
 bash
 git clone https://github.com/Luxuse/pongoEraser.git
