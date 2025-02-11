@@ -5,14 +5,23 @@ Effacement de disque sécurisé
 Effacez complètement et en toute sécurité vos disques durs avec plusieurs méthodes, allant du remplissage par des zéros à la méthode Gutmann (35 passes).
 
   ✅ 9 méthodes d'effacement sécurisées
+  
   🛑 Remplissage par des zéros (1 passe)
+  
   🔄 Remplissage aléatoire (1 passe)
+  
   ✈️ Air Force 5020 (2 passes : 1 aléatoire + 1 zéro)
+  
   🔐 Norme NIST 800-88 (1 passe aléatoire)
+  
   🏛️ Norme HMG IS5 (3 passes : 1 zéro + 1 aléatoire + 1 zéro)
+ 
   🛡 DoD 5220.22-M ECE (7 passes)
+  
   🔥 Méthode Gutmann (35 passes, ultra-sécurisée)
+ 
   🇫🇷 Méthode ANSSI (3 passes : 1 aléatoire + 1 zéro + 1 aléatoire)
+  
   ⚡ Secure Erase (pour les SSD)
 
 Effacement de fichiers et dossiers
