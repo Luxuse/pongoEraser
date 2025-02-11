@@ -55,7 +55,7 @@ case $CHOICE in
     case $METHOD in
       1) shred -n 0 -z -v $DISK_PATH;;
       2) shred -n 1 -v $DISK_PATH;;
-      3) shred -n 1 -Z -v $DISK_PATH;;
+      3) shred -n 1 -z -v $DISK_PATH;;
       4) shred -n 1 -v $DISK_PATH;;
       5) (shred -n 0 -z -v $DISK_PATH && shred -n 1 -v $DISK_PATH && shred -n 0 -z -v $DISK_PATH);;
       6) shred -n 7 -v $DISK_PATH;;
