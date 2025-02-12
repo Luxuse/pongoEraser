@@ -6,6 +6,11 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+# Récupérer l'emplacement du script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CERT_DIR="${SCRIPT_DIR}/certificats_effacement"
+mkdir -p "$CERT_DIR"
+
 echo "                     _____ "                
 echo " ___ ___ ___ ___ ___|   __|___ ___ ___ ___ "
 echo "| . | . |   | . | . |   __|  _| .'|_ -| -_|"
@@ -50,7 +55,22 @@ case $CHOICE in
     echo "8) Méthode ANSSI (3 passes)"
     echo "9) SSD Secure Erase"
     read -p "Choisissez une méthode (1-9) : " METHOD
-    
+
+    # Déterminer le nom de la méthode choisie
+    case $METHOD in
+      1) METHOD_NAME="Remplissage par des zéros (1 passe)";;
+      2) METHOD_NAME="Remplissage aléatoire (1 passe)";;
+      3) METHOD_NAME="Air Force 5020 (2 passes)";;
+      4) METHOD_NAME="Norme NIST 800-88 (1 passe aléatoire)";;
+      5) METHOD_NAME="Norme HMG IS5 (3 passes)";;
+      6) METHOD_NAME="Standard DoD 5220.22-M ECE (7 passes)";;
+      7) METHOD_NAME="Méthode Gutmann (35 passes)";;
+      8) METHOD_NAME="Méthode ANSSI (3 passes)";;
+      9) METHOD_NAME="SSD Secure Erase";;
+      *) echo "❌ Option invalide."; exit 1;;
+    esac
+
+    START_TIME=$(date)
     echo "⏳ Effacement en cours..."
     case $METHOD in
       1) shred -n 0 -z -v $DISK_PATH;;
@@ -66,7 +86,27 @@ case $CHOICE in
     esac
     
     if [ $? -eq 0 ]; then
-      echo "✅ Effacement terminé avec succès."
+      
+         END_TIME=$(date)
+    echo "✅ Effacement terminé avec succès."
+    
+    # Génération du certificat
+    TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+    CERTIFICATE="${CERT_DIR}/certificat_effacement_${DISK}_${TIMESTAMP}.txt"
+    echo "=============================" > "$CERTIFICATE"
+    echo "  CERTIFICAT D'EFFACEMENT  " >> "$CERTIFICATE"
+    echo "=============================" >> "$CERTIFICATE"
+    echo "Disque : $DISK_PATH" >> "$CERTIFICATE"
+    echo "Méthode d'effacement : $METHOD_NAME" >> "$CERTIFICATE"
+    echo "Début : $START_TIME" >> "$CERTIFICATE"
+    echo "Fin : $END_TIME" >> "$CERTIFICATE"
+    echo "Utilisateur : $(whoami)" >> "$CERTIFICATE"
+    echo "Machine : $(hostname)" >> "$CERTIFICATE"
+    echo "Signature SHA256 :" >> "$CERTIFICATE"
+    sha256sum "$CERTIFICATE" >> "$CERTIFICATE"
+    echo "✅ Certificat enregistré : $CERTIFICATE"
+    
+
     else
       echo "❌ Une erreur est survenue pendant l'effacement."
     fi
