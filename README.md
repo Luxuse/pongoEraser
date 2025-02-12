@@ -34,9 +34,15 @@ EXT4
 exFAT
 
 ✅ Messages clairs avec vérification des erreurs
+
 ✅ Interface simple et intuitive
+
+✅certificat d'effacement de disque
+
 📜 Instructions d'utilisation
+
 1️⃣ Téléchargement & Exécution
+
 ## Téléchargez le script et exécutez-le avec les permissions root :
 
 bash
