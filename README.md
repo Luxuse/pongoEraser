@@ -79,7 +79,7 @@ Sécurité : Veuillez vérifier attentivement le disque que vous sélectionnez a
 Les contributions à Pongo Eraser sont les bienvenues. Si vous trouvez des bugs ou avez des suggestions d'amélioration, n'hésitez pas à ouvrir un problème ou à soumettre une demande de pull sur le dépôt GitHub du projet.
 
 ## 📜 Licence
-Pongo Eraser est distribué sous la Licence MIT.
+Pongo Eraser est distribué sous la Licence (CC BY-NC-SA 4.0).
 
 🧪 Tests
 Pour tester le script Pongo Eraser, vous pouvez l'exécuter sur un dispositif de stockage non critique afin de vérifier son bon fonctionnement. Soyez toujours prudent lors de l'utilisation du script, car il peut effacer de manière permanente les données.
